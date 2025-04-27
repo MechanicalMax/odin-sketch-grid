@@ -4,6 +4,7 @@ const sketchGridContainerElement = document.querySelector(sketchGridContainerEle
 
 // Create Sketch Grid
 function populateSketchGrid(grid, gridSideLength, sideSquareCount) {
+    grid.innerHTML = "";
     const squareSideLength = gridSideLength / sideSquareCount;
     for (let i = 0; i < sideSquareCount**2; i++) {
         const square = document.createElement("div");
@@ -26,14 +27,31 @@ const newGridButton = document.createElement("button");
 newGridButton.type = "button";
 newGridButton.innerText = "New Grid";
 
-newGridButton.addEventListener("click", () => {
-    console.log("New Grid Button Clicked!");
-})
-
 const grid = document.createElement("div");
 const gridSideLength = 1000;
 grid.style.width = `${gridSideLength}px`;
 grid.style.height = `${gridSideLength}px`;
+
+newGridButton.addEventListener("click", () => {
+    var validData = false;
+    var squaresPerRow = 16;
+    while (!validData) {
+        const response = window.prompt("How many squares in each row would you like in your new grid?", "16");
+
+        if (!response) return;
+
+        const intResponse = Number.parseInt(response);
+        if (intResponse != NaN && response > 0 && response <= 100 && response == intResponse) {
+            validData = true;
+            squaresPerRow = intResponse;
+            continue;
+        }
+
+        if (!window.confirm("The number of squares per row must be an integer value between 1 and 100.")) return;
+    }
+    console.log(squaresPerRow);
+    populateSketchGrid(grid, gridSideLength, squaresPerRow);
+})
 
 populateSketchGrid(grid, gridSideLength, 16);
 

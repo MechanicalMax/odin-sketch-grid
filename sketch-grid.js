@@ -7,8 +7,14 @@ function populateSketchGrid(grid, gridSideLength, sideSquareCount) {
     const squareSideLength = gridSideLength / sideSquareCount;
     for (let i = 0; i < sideSquareCount**2; i++) {
         const square = document.createElement("div");
-        square.className = "square";
-        square.style = `background-color: black; width: ${squareSideLength}px; height: ${squareSideLength}px`;
+        square.style.width = `${squareSideLength}px`;
+        square.style.height = `${squareSideLength}px`;
+        square.style.backgroundColor = "#FFF";
+
+        square.addEventListener("mouseover", () => {
+            square.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
+        });
+
         grid.appendChild(square);
     }
 }

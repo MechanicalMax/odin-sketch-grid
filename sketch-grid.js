@@ -2,6 +2,11 @@
 const sketchGridContainerElementSelector = "main";
 const sketchGridContainerElement = document.querySelector(sketchGridContainerElementSelector);
 
+// Sketch Grid Properties
+const gridSideLength = 500; // px
+const gridmin = 1;           // Squares per row
+const gridmax = 100;         // Squares per row
+
 // Create Sketch Grid
 function populateSketchGrid(grid, gridSideLength, sideSquareCount) {
     grid.innerHTML = "";
@@ -28,7 +33,6 @@ newGridButton.type = "button";
 newGridButton.innerText = "New Grid";
 
 const grid = document.createElement("div");
-const gridSideLength = 1000;
 grid.style.width = `${gridSideLength}px`;
 grid.style.height = `${gridSideLength}px`;
 
@@ -41,7 +45,7 @@ newGridButton.addEventListener("click", () => {
         if (!response) return;
 
         const intResponse = Number.parseInt(response);
-        if (intResponse != NaN && response > 0 && response <= 100 && response == intResponse) {
+        if (intResponse != NaN && response >= gridmin && response <= gridmax && response == intResponse) {
             validData = true;
             squaresPerRow = intResponse;
             continue;

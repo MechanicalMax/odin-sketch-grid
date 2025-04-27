@@ -3,10 +3,12 @@ const sketchGridContainerElementSelector = "main";
 const sketchGridContainerElement = document.querySelector(sketchGridContainerElementSelector);
 
 // Create Sketch Grid
-function populateSketchGrid(grid, sideLength) {
-    for (let i = 0; i < sideLength**2; i++) {
+function populateSketchGrid(grid, gridSideLength, sideSquareCount) {
+    const squareSideLength = gridSideLength / sideSquareCount;
+    for (let i = 0; i < sideSquareCount**2; i++) {
         const square = document.createElement("div");
         square.className = "square";
+        square.style = `background-color: black; width: ${squareSideLength}px; height: ${squareSideLength}px`;
         grid.appendChild(square);
     }
 }
@@ -19,8 +21,11 @@ newGridButton.type = "button";
 newGridButton.innerText = "New Grid";
 
 const grid = document.createElement("div");
+const gridSideLength = 1000;
+grid.style.width = `${gridSideLength}px`;
+grid.style.height = `${gridSideLength}px`;
 
-populateSketchGrid(grid, 16);
+populateSketchGrid(grid, gridSideLength, 16);
 
 article.appendChild(newGridButton);
 article.appendChild(grid);

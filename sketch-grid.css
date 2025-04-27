@@ -14,8 +14,3 @@ article.sketch-grid {
     padding: 5px;
     margin-top: -10px;
 }
-
-.sketch-grid>div {
-    width: 500px;
-    height: 500px;
-}

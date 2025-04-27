@@ -26,6 +26,10 @@ const newGridButton = document.createElement("button");
 newGridButton.type = "button";
 newGridButton.innerText = "New Grid";
 
+newGridButton.addEventListener("click", () => {
+    console.log("New Grid Button Clicked!");
+})
+
 const grid = document.createElement("div");
 const gridSideLength = 1000;
 grid.style.width = `${gridSideLength}px`;

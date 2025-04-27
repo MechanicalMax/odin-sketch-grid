@@ -14,3 +14,10 @@ article.sketch-grid {
     padding: 5px;
     margin-top: -10px;
 }
+
+.sketch-grid>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
